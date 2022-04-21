@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: wow-wotlk-trinitycore
+  name: wow-wotlk-trinitycore-deployment
+  labels:
+    app: wow-wotlk-trinitycore
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: wow-wotlk-trinitycore
+  template:
+    metadata:
+      labels:
+        app: wow-wotlk-trinitycore
+    spec:
+      containers:
+      - name: wow-wotlk-trinitycore
+        image: lubbersazhci.azurecr.io/wow-wotlk-trinitycore:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3724
+        - containerPort: 8085
+      imagePullSecrets:
+      - name: azure-container-registry
