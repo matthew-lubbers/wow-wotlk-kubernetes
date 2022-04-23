@@ -7,7 +7,7 @@ metadata:
      volume.beta.kubernetes.io/storage-class: default
 spec:
    accessModes:
-     - ReadWriteMany
+     - ReadWriteOnce
    resources:
      requests:
        storage: 20Gi
